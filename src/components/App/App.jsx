@@ -11,6 +11,8 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Calendar App</h1>
         </header>
+
+        <h1>Hello</h1>
  
       </div>
     );
