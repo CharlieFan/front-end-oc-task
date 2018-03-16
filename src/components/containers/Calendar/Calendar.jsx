@@ -3,10 +3,6 @@ import './Calendar.css';
 
 const TotalScale = 42;
 
-// class Row extends Component {
-
-// }
-
 class Calendar extends Component {
     constructor(props) {
         super(props);
@@ -102,7 +98,7 @@ class Calendar extends Component {
             dateMatrix[day.week][day.day] = day;
         });
         
-        console.log(dateMatrix);
+        // console.log(dateMatrix);
 
         return dateMatrix.map((dateItem, key) =>
             <tr key={key}>
