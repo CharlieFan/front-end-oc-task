@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
-
 import logo from './logo.svg';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Calendar App</h1>
-        </header>
+// Components:
+import Main from 'components/containers/Main';
 
-        <h1>Hello</h1>
- 
-      </div>
-    );
-  }
+class App extends Component {
+    render() {
+        return (
+            <div className="App">
+                <header className="App-header">
+                    <img src={logo} className="App-logo" alt="logo" />
+                    <h1 className="App-title">Calendar App</h1>
+                </header>
+
+                <Main />
+            </div>
+        );
+    }
 }
 
 export default App;
