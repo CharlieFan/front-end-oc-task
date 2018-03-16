@@ -3,6 +3,10 @@ import './Calendar.css';
 
 const TotalScale = 42;
 
+// class Row extends Component {
+
+// }
+
 class Calendar extends Component {
     constructor(props) {
         super(props);
@@ -15,14 +19,24 @@ class Calendar extends Component {
         month = month - 1;
         let firstDay = new Date(year, month, 1);
         firstDay = firstDay.getDay();
-        console.log('firstday is:', firstDay);
         return firstDay;
     }
 
     getLastDateOfMonth(year, month) {
         let lastDate = new Date(year, month, 0);
-        console.log('total is:', lastDate.getDate());
         return lastDate.getDate();
+    }
+
+    checkCurrent(year, month, date) {
+        let current = new Date();
+        let currentDate = current.getDate();
+        let currentMonth = current.getMonth() + 1;
+        let currentYear = current.getFullYear();
+        if (year === currentYear && month === currentMonth && date === currentDate) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     generateDayList(firstday, week = 0, totalDays, month, year) {
@@ -38,7 +52,8 @@ class Calendar extends Component {
                 date: i,
                 month: month,
                 year: year,
-                week: week
+                week: week,
+                isCurrent: this.checkCurrent(year, month, i)
             };
 
             dateArray.push(day);
@@ -57,39 +72,52 @@ class Calendar extends Component {
         let start = dateArray[0];
         let prepend = [];
         for(let i = 0; i < start.day; i++) {
+            let date = new Date(year, start.month - 1, 1 - start.day + i).getDate();
             prepend.push({
                 day: i,
-                date: new Date(year, start.month - 1, 1 - start.day + i).getDate(),
+                date: date,
                 month: start.month - 1,
                 year: start.year,
-                week: start.week
+                week: start.week,
+                isCurrent: this.checkCurrent(start.year, start.month - 1, date)
             });
         }
         
         // console.log(prepend);
         dateArray = prepend.concat(dateArray);
+        // console.log(dateArray);
         
         let remain = TotalScale - dateArray.length;
         let end = dateArray[dateArray.length - 1];
-        let appendFirstDay = end.day;
+        let appendFirstDay = end.day + 1;
         let appendWeek = end.week;
         let append = this.generateDayList(appendFirstDay, appendWeek, remain, month + 1, year);
         
-        console.log(append);
+        // console.log(append);
         dateArray = dateArray.concat(append);
-        console.log(dateArray);
+        // console.log(dateArray);
         
-        // let dateMatrix = [[],[],[],[],[],[]];
-        // dateArray.forEach(day => {
-        //     dateMatrix[day.week][day.day] = day;
-        // });
+        let dateMatrix = [[],[],[],[],[],[]];
+        dateArray.forEach(day => {
+            dateMatrix[day.week][day.day] = day;
+        });
+        
+        console.log(dateMatrix);
 
-
-        // console.log(dateMatrix);
+        return dateMatrix.map((dateItem, key) =>
+            <tr key={key}>
+                {
+                    dateItem.map((item, key) => {
+                        return (
+                            <td key={key} className={item.isCurrent ? 'current' : ''}>{item.date}</td>
+                        );
+                    })
+                }
+            </tr>
+        );
     }
 
     render() {
-        this.initCalendar(2018, 3);
         return (
             <div className="calendar">
                 <div className="cal-header">
@@ -113,26 +141,10 @@ class Calendar extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-                        </tr>
+                        {this.initCalendar(2018, 3)}
                     </tbody>
                 </table>
+
             </div>
         );
     }
