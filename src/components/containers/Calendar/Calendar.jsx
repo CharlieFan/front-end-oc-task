@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './Calendar.css';
 
 const TotalScale = 42;
+const monthMap = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct' , 'Nov', 'Dec'];
 
 class Calendar extends Component {
     constructor(props) {
@@ -112,7 +113,7 @@ class Calendar extends Component {
                         return (
                             <td key={key}
                                 className={
-                                    `${item.dateStr === this.state.selectedDate ? 'active' : ''} ${item.isCurrent ? 'current' : ''}`
+                                    `${item.dateStr === this.props.current ? 'active' : ''} ${item.isCurrent ? 'current' : ''}`
                                 }
                                 onClick={() => { this.selectDate(item);}}>{item.date}</td>
                         );
@@ -127,16 +128,32 @@ class Calendar extends Component {
         this.props.selectDate(dateStr);
     }
 
+    nextMonth() {
+        let copy = Object.assign({}, this.state);
+        let currentMonth = copy.date.getMonth();
+        copy.date.setMonth(currentMonth + 1);
+        // console.log(copy);
+        this.setState(copy);
+    }
+
+    prevMonth() {
+        let copy = Object.assign({}, this.state);
+        let currentMonth = copy.date.getMonth();
+        copy.date.setMonth(currentMonth - 1);
+        // console.log(copy);
+        this.setState(copy);
+    }
+
     render() {
         return (
             <div className="calendar">
                 <div className="cal-header">
-                    <div className="arrowbox">&lt;</div>
+                    <div className="arrowbox" onClick={() => { this.prevMonth(); }}>&lt;</div>
                     <div className="mon-year-box">
-                        <p>March</p>
-                        <p>2018</p>
+                        <p>{monthMap[this.state.date.getMonth()]}</p>
+                        <p>{this.state.date.getFullYear()}</p>
                     </div>
-                    <div className="arrowbox">&gt;</div>
+                    <div className="arrowbox" onClick={() => { this.nextMonth(); }}>&gt;</div>
                 </div>
                 <table>
                     <thead>

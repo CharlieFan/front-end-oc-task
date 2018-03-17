@@ -9,7 +9,7 @@ class Main extends Component {
         super(props);
         let now = new Date();
         this.state = {
-            currentSelect: `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}}`
+            currentSelect: `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`
         };
     }
 
@@ -17,7 +17,6 @@ class Main extends Component {
     selectDate = (dateStr) => {
         let data = Object.assign({}, this.state);
         data.currentSelect = dateStr;
-        console.log(data);
         this.setState(data);
     }
 
@@ -25,6 +24,7 @@ class Main extends Component {
         return (
             <div>
                 <Calendar current={this.state.currentSelect}  selectDate={this.selectDate}/>
+                date: {this.state.currentSelect}
             </div>
         );
     }
