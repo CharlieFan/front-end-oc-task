@@ -1,4 +1,5 @@
 import React ,{ Component } from 'react';
+import PropTypes from 'prop-types';
 import './Calendar.css';
 
 const TotalScale = 42;
@@ -9,7 +10,7 @@ class Calendar extends Component {
         let now = new Date();
         this.state = {
             date: now,
-            selectedDate: `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}}`
+            selectedDate: this.props.current
         };
     }
 
@@ -122,11 +123,8 @@ class Calendar extends Component {
     }
 
     selectDate(dateObj) {
-        // console.log(dateObj.dateStr);
-        let data = Object.assign({}, this.state);
-        let selectDate = `${dateObj.year}-${dateObj.month}-${dateObj.date}`;
-        data.selectedDate = selectDate;
-        this.setState(data);
+        let dateStr = `${dateObj.year}-${dateObj.month}-${dateObj.date}`;
+        this.props.selectDate(dateStr);
     }
 
     render() {
@@ -163,5 +161,10 @@ class Calendar extends Component {
         );
     }
 }
+
+Calendar.propTypes = {
+    current: PropTypes.string,
+    selectDate: PropTypes.func
+};
 
 export default Calendar;
