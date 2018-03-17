@@ -32,26 +32,26 @@
     tbody {
         background-color: $color-extra-light-gray;
         color: $gray-text;
-        font-size: 16px;
+        font-size: 1rem;
     }
 
     td, th {
-        height: 65px;
+        height: 4rem;
     }
 
     td {
-        
+
         &.current,
         &:hover {
             border-radius: 4px;
         }
 
         &.current {
-            background: $color-primary;
+            background: $color-primary !important;
             color: $color-white;
         }
-        
-        &:active {
+
+        &.active {
             background-color: $color-light-gray;
         }
     }

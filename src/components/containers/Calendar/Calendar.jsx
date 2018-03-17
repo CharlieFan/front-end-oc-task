@@ -6,8 +6,10 @@ const TotalScale = 42;
 class Calendar extends Component {
     constructor(props) {
         super(props);
+        let now = new Date();
         this.state = {
-            date: new Date()
+            date: now,
+            selectedDate: `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}}`
         };
     }
 
@@ -49,6 +51,7 @@ class Calendar extends Component {
                 month: month,
                 year: year,
                 week: week,
+                dateStr: `${year}-${month}-${i}`,
                 isCurrent: this.checkCurrent(year, month, i)
             };
 
@@ -75,29 +78,30 @@ class Calendar extends Component {
                 month: start.month - 1,
                 year: start.year,
                 week: start.week,
+                dateStr: `${start.year}-${start.month - 1}-${date}`,
                 isCurrent: this.checkCurrent(start.year, start.month - 1, date)
             });
         }
-        
+
         // console.log(prepend);
         dateArray = prepend.concat(dateArray);
         // console.log(dateArray);
-        
+
         let remain = TotalScale - dateArray.length;
         let end = dateArray[dateArray.length - 1];
         let appendFirstDay = end.day + 1;
         let appendWeek = end.week;
         let append = this.generateDayList(appendFirstDay, appendWeek, remain, month + 1, year);
-        
+
         // console.log(append);
         dateArray = dateArray.concat(append);
         // console.log(dateArray);
-        
+
         let dateMatrix = [[],[],[],[],[],[]];
         dateArray.forEach(day => {
             dateMatrix[day.week][day.day] = day;
         });
-        
+
         // console.log(dateMatrix);
 
         return dateMatrix.map((dateItem, key) =>
@@ -105,12 +109,24 @@ class Calendar extends Component {
                 {
                     dateItem.map((item, key) => {
                         return (
-                            <td key={key} className={item.isCurrent ? 'current' : ''}>{item.date}</td>
+                            <td key={key}
+                                className={
+                                    `${item.dateStr === this.state.selectedDate ? 'active' : ''} ${item.isCurrent ? 'current' : ''}`
+                                }
+                                onClick={() => { this.selectDate(item);}}>{item.date}</td>
                         );
                     })
                 }
             </tr>
         );
+    }
+
+    selectDate(dateObj) {
+        // console.log(dateObj.dateStr);
+        let data = Object.assign({}, this.state);
+        let selectDate = `${dateObj.year}-${dateObj.month}-${dateObj.date}`;
+        data.selectedDate = selectDate;
+        this.setState(data);
     }
 
     render() {
@@ -137,7 +153,9 @@ class Calendar extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.initCalendar(2018, 3)}
+                        {
+                            this.initCalendar(this.state.date.getFullYear(), this.state.date.getMonth() + 1)
+                        }
                     </tbody>
                 </table>
 
