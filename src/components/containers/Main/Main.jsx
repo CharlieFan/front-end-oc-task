@@ -3,6 +3,7 @@ import './Main.css';
 
 // components:
 import Calendar from 'components/containers/Calendar';
+import Todos from 'components/containers/Todos';
 
 class Main extends Component {
     constructor(props) {
@@ -25,6 +26,8 @@ class Main extends Component {
             <div>
                 <Calendar current={this.state.currentSelect}  selectDate={this.selectDate}/>
                 date: {this.state.currentSelect}
+
+                <Todos />
             </div>
         );
     }
