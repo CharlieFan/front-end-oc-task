@@ -132,7 +132,6 @@ class Calendar extends Component {
         let copy = Object.assign({}, this.state);
         let currentMonth = copy.date.getMonth();
         copy.date.setMonth(currentMonth + 1);
-        // console.log(copy);
         this.setState(copy);
     }
 
@@ -140,7 +139,6 @@ class Calendar extends Component {
         let copy = Object.assign({}, this.state);
         let currentMonth = copy.date.getMonth();
         copy.date.setMonth(currentMonth - 1);
-        // console.log(copy);
         this.setState(copy);
     }
 

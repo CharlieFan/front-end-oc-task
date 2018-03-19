@@ -5,6 +5,7 @@ import './Main.css';
 import Calendar from 'components/containers/Calendar';
 import Todos from 'components/containers/Todos';
 import EventWin from 'components/containers/EventWin';
+import api from 'api';
 
 class Main extends Component {
     constructor(props) {
@@ -21,7 +22,9 @@ class Main extends Component {
     selectDate = (dateStr) => {
         let data = Object.assign({}, this.state);
         data.currentSelect = dateStr;
-        this.setState(data);
+        this.setState(data, () => {
+            this.getEventsList(this.state.currentSelect);
+        });
     }
 
     openWin = () => {
@@ -37,8 +40,25 @@ class Main extends Component {
     }
 
     submitEvent = (data) => {
-        console.log(data);
-        this.closeWin();
+        data = Object.assign(data, {date: this.state.currentSelect});
+        let copy = Object.assign({}, this.state);
+        copy.todos = copy.todos.concat([data]);
+        // console.log(copy.todos);
+        this.setState({todos: copy.todos}, () => {
+            api.setTodos(this.state.currentSelect, this.state.todos).then(() => {
+                this.closeWin();
+            });
+        });
+    }
+
+    getEventsList(date) {
+        api.getTodos(date).then((res) => {
+            this.setState({todos: res});
+        });
+    }
+
+    componentDidMount() {
+        this.getEventsList(this.state.currentSelect);
     }
 
     render() {

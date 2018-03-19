@@ -28,9 +28,10 @@ class EventWin extends Component {
 
     handleSubmit(data) {
         let {minute, hour, title} = data;
-        let timeStamp = hour * 60 + minute;
+        let timeStamp = Number(hour) * 60 + Number(minute);
         this.props.onSubmit({
             timeStamp,
+            time: `${hour}:${minute}`,
             title
         });
     }
@@ -50,7 +51,7 @@ class EventWin extends Component {
                                     <input type="number"
                                         name="hour"
                                         className="flex-1 m-r-3"
-                                        max="24"
+                                        max="23"
                                         min="0"
                                         required
                                         placeholder="Hour(24-hour)"

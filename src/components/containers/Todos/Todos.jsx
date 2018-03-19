@@ -1,23 +1,26 @@
-import React ,{ Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './Todos.css';
 
-class Todos extends Component {
-    render() {
-        return (
-            <ul className="view-todos">
-                <li>
-                    Februray 2018 11:00 - Eat a burito oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
-                </li>
-                <li>
-                    Februray 2018 11:00 - Eat a burito
-                </li>
-                <li>
-                    Februray 2018 11:00 - Eat a burito
-                </li>
-            </ul>
-        );
-    }
+function Todos(props) {
+    let sortedList = props.currentList.sort((a, b) => {
+        return a.timeStamp - b.timeStamp;
+    });
+    // console.log(sortedList);
+
+    return (
+        <ul className="view-todos">
+            {
+                sortedList.map((item, key) => {
+                    return (
+                        <li key={key}>
+                            {`${key + 1}) ${item.date} ${item.time} ${item.title}`}
+                        </li>
+                    );
+                })
+            }
+        </ul>
+    );
 }
 
 Todos.propTypes = {

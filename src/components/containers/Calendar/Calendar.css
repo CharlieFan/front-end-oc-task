@@ -33,7 +33,8 @@
     color: #fff;
     font-size: 1.5rem; }
     .calendar .cal-header .arrowbox {
-      padding: 0 3rem; }
+      padding: 0 3rem;
+      cursor: pointer; }
   .calendar table {
     width: 100%;
     border-collapse: collapse; }
@@ -46,7 +47,8 @@
     color: #646267;
     font-size: 1rem; }
   .calendar td, .calendar th {
-    height: 4rem; }
+    height: 4rem;
+    cursor: pointer; }
   .calendar td.current, .calendar td:hover {
     border-radius: 4px; }
   .calendar td.current {
