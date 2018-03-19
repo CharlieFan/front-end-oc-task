@@ -1,3 +1,8 @@
+/**
+ * Calender Component
+ * @param current string of current selected date
+ * @func selectDate function to call when selecte a date
+ */
 import React ,{ Component } from 'react';
 import PropTypes from 'prop-types';
 import './Calendar.css';

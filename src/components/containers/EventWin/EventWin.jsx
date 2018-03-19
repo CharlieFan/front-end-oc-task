@@ -1,3 +1,9 @@
+/**
+ * Event Window Component
+ * @param isShow: boolean to control if show window or not
+ * @func onSubmit: function to call when submit a event
+ * @func onClose: function to call when need to close the window
+ */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './EventWin.css';

@@ -1,5 +1,7 @@
+// just simulate api
+
 const getTodos = function(date) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         let result = localStorage.getItem(date);
         result = JSON.parse(result);
         if (result) {

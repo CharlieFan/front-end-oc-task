@@ -1,3 +1,6 @@
+/**
+ * Main Container Component
+ */
 import React, { Component } from 'react';
 import './Main.css';
 
@@ -64,7 +67,8 @@ class Main extends Component {
     render() {
         return (
             <div className="view-main">
-                <Calendar current={this.state.currentSelect}  selectDate={this.selectDate}/>
+                <Calendar current={this.state.currentSelect}
+                    selectDate={this.selectDate}/>
 
                 <div className="event-top-bar">
                     <h2>{this.state.currentSelect}</h2>
