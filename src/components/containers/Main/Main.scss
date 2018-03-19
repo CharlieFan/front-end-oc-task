@@ -3,10 +3,13 @@
 .view-main {
     .event-top-bar {
         display: flex;
-        height: 4rem;
+        height: 3rem;
+        align-items: center;
         padding: 1rem;
         justify-content: space-between;
-        align-content: center;
 
+        h2 {
+            font-size: 1.25rem;
+        }
     }
 }

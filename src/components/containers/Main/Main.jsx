@@ -12,7 +12,7 @@ class Main extends Component {
         let now = new Date();
         this.state = {
             currentSelect: `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`,
-            isShow: false
+            isShow: true
         };
     }
 
@@ -55,6 +55,7 @@ class Main extends Component {
 
                 <Todos />
                 <EventWin isShow={this.state.isShow}
+                    onClose={this.closeWin}
                     onSubmit={this.submitEvent}/>
             </div>
         );

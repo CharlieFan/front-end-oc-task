@@ -70,8 +70,11 @@ class EventWin extends Component {
                                         placeholder="Event Name"
                                         onChange={this.handleChange}/>
                                 </div>
-                                <button className="btn" type="submit">
+                                <button className="btn btn-primary m-l-3" type="submit">
                                     Save
+                                </button>
+                                <button className="btn m-l-3" type="button" onClick={this.props.onClose}>
+                                    Cancel
                                 </button>
                             </form>
                         </div>
@@ -86,7 +89,8 @@ class EventWin extends Component {
 
 EventWin.propTypes = {
     isShow: PropTypes.bool,
-    onSubmit: PropTypes.func
+    onSubmit: PropTypes.func,
+    onClose: PropTypes.func
 };
 
 export default EventWin;
