@@ -31,8 +31,6 @@ class EventWin extends Component {
         let timeStamp = hour * 60 + minute;
         this.props.onSubmit({
             timeStamp,
-            hour,
-            minute,
             title
         });
     }

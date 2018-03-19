@@ -54,7 +54,8 @@ class Main extends Component {
                     </button>
                 </div>
 
-                <Todos />
+                <Todos currentList={this.state.todos} />
+
                 <EventWin isShow={this.state.isShow}
                     onClose={this.closeWin}
                     onSubmit={this.submitEvent}/>
