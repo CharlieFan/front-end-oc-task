@@ -1,0 +1,12 @@
+@import "stylesheets/common/_common.scss";
+
+.view-main {
+    .event-top-bar {
+        display: flex;
+        height: 4rem;
+        padding: 1rem;
+        justify-content: space-between;
+        align-content: center;
+
+    }
+}

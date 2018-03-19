@@ -1,0 +1,31 @@
+@import "stylesheets/common/_common.scss";
+
+.view-event-win {
+    position: fixed;
+    top: 45%;
+    left: calc(50% - 9rem);
+    width: 18rem;
+    padding: 0.625rem;
+    background: $color-extra-gray;
+    opacity: 0.9;
+
+    .flex-1 {
+        flex: 1;
+    }
+
+    .m-l-3 {
+        margin-left: 0.3rem;
+    }
+
+    .m-r-3 {
+        margin-right: 0.3rem;
+    }
+
+    .m-b-6 {
+        margin-bottom: 0.625rem;
+    }
+
+    button {
+        min-width: 6rem;
+    }
+}

@@ -1,1 +1,24 @@
 @import "./_var.scss";
+@import "./_utils.scss";
+
+.btn {
+    padding: 0.625rem 0.3rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 3px;
+    border: none;
+    background: $color-light-gray;
+
+    &:active {
+        background: shade($color-light-gray, 20%);
+    }
+}
+
+.btn-primary {
+    background: $color-primary;
+    color: $color-white;
+
+    &:active {
+        background: tint($color-primary, 20%);
+    }
+}

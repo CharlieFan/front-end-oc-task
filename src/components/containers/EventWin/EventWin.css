@@ -1,0 +1,40 @@
+.w-100-p {
+  width: 100%; }
+
+.flex-row {
+  display: flex; }
+
+.btn {
+  padding: 0.625rem 0.3rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 3px;
+  border: none;
+  background: #e3e2e2; }
+  .btn:active {
+    background: #b6b5b5; }
+
+.btn-primary {
+  background: #02be9c;
+  color: #fff; }
+  .btn-primary:active {
+    background: #35cbb0; }
+
+.view-event-win {
+  position: fixed;
+  top: 45%;
+  left: calc(50% - 9rem);
+  width: 18rem;
+  padding: 0.625rem;
+  background: #555454;
+  opacity: 0.9; }
+  .view-event-win .flex-1 {
+    flex: 1; }
+  .view-event-win .m-l-3 {
+    margin-left: 0.3rem; }
+  .view-event-win .m-r-3 {
+    margin-right: 0.3rem; }
+  .view-event-win .m-b-6 {
+    margin-bottom: 0.625rem; }
+  .view-event-win button {
+    min-width: 6rem; }

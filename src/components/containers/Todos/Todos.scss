@@ -1,1 +1,16 @@
 @import "stylesheets/common/_common.scss";
+
+.view-todos {
+    width: 100%;
+
+    li {
+        padding: 0.5rem 0.625rem;
+        font-size: 1.25rem;
+        text-align: left;
+        overflow-wrap: break-word;
+
+        &:nth-child(2n + 1) {
+            background-color: $color-extra-light-gray;
+        }
+    }
+}
