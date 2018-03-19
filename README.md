@@ -1,3 +1,26 @@
+# RE: Take home assignment
+```yarn```
+
+```yarn start```
+
+Brief of structure:
+```
+src
+|-- api
+|-- components
+    |-- App (Entry components)
+    |-- containers
+        |-- Main
+        |-- Calendar
+        |-- EventWin
+        |-- Todos
+|-- helpers
+|-- stylesheets
+    |-- common (common styles)
+    |-- index.css (entry style file)
+|-- index.js (Entry file)
+```
+
 # Take home assignment - Calendar App
   Hello! 👋
 
