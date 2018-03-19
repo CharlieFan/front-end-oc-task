@@ -12,7 +12,8 @@ class Main extends Component {
         let now = new Date();
         this.state = {
             currentSelect: `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`,
-            isShow: true
+            isShow: false,
+            todos: []
         };
     }
 

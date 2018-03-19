@@ -27,7 +27,14 @@ class EventWin extends Component {
     }
 
     handleSubmit(data) {
-        this.props.onSubmit(data);
+        let {minute, hour, title} = data;
+        let timeStamp = hour * 60 + minute;
+        this.props.onSubmit({
+            timeStamp,
+            hour,
+            minute,
+            title
+        });
     }
 
     render() {
